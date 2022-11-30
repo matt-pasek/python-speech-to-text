@@ -1,6 +1,7 @@
 import argparse
 import requests
 import time
+import pyttsx3
 
 # Mateusz Pasek & Maksymilian Rybak 3tc
 
@@ -79,6 +80,13 @@ def main():
             for line in transcript:
                 l = line["text"] + "\n"
                 f.write(l)
+
+    # text to speech
+    with open("transcript.txt", "r") as f:
+        text = f.read()
+        engine = pyttsx3.init()
+        engine.say(text)
+        engine.runAndWait()
     return
 
 
